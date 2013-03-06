@@ -20,6 +20,8 @@ este libro llevarás control de versiones de código fuente, aunque en
 realidad puedes hacer esto con casi cualquier tipo de archivo que
 encuentres en un ordenador.
 
+-- Vamos a dejar un espacio aqui, por si se me ocurre algo luego --
+
 Si eres diseñador gráfico o web, y quieres mantener cada versión de
 una imagen o diseño (algo que sin duda quieres), un sistema de control
 de versiones (Version Control System o VCS en inglés) es una elección
