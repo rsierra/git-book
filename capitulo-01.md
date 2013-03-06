@@ -32,3 +32,17 @@ causando un problema, quién introdujo un error y cuándo, y mucho más.
 Usar un VCS también significa generalmente que si fastidias o pierdes
 archivos, puedes recuperarlos fácilmente. Además, obtienes todos estos
 beneficios a un coste muy bajo.
+
+### Sistemas de control de versiones locales ###
+
+El método de control de versiones usado por mucha gente es copiar los
+archivos a otro directorio (quizás indicando la fecha y hora en que lo
+hicieron, si son avispados). Este enfoque es muy común porque es muy
+simple, pero también tremendamente propenso a errores. Es fácil
+olvidar en qué directorio te encuentras, y guardar accidentalmente en
+el archivo equivocado o sobrescribir archivos que no querías.
+
+Para hacer frente a este problema, los programadores desarrollaron
+hace tiempo VCSs locales que contenían una simple base de datos en la
+que se llevaba registro de todos los cambios realizados sobre los
+archivos.
