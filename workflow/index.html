@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Workflow en Git</title>
+
+    <meta name="description" content="Conceptos generales sobre el flujo de trabajo con Git">
+    <meta name="author" content="Alejandro Fernández, Rubén Sierra">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <h1>Workflow en Git</h1>
+          <h3>Conceptos generales sobre <br/> el flujo de trabajo con Git</h3>
+        </section>
+
+        <section>
+          <h2>Ramas</h2>
+        </section>
+
+        <section>
+          <img src="images/branches.jpg" alt="Branches">
+        </section>
+
+        <section>
+          <h2>Ramas</h2>
+          <ul>
+            <li>Permiten trabajar en paralelo.</li>
+            <li>Siempre hay una rama principal (master).</li>
+            <li>De largo recorrido para el trabajo general.</li>
+            <li>Puntuales para cosas concisas: correcciones, funcionalidades...</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Merge</h2>
+        </section>
+
+        <section>
+          <img width="659" height="393" src="images/git-merge.gif" alt="Git Merge">
+        </section>
+
+        <section>
+          <h2>Merge</h2>
+          <ul>
+            <li>Mezcla los commits de una rama sobre otra.</li>
+            <li>Resuelve conflictos automáticamente.</li>
+            <li>Los que no puede, los marca y espera a que se resuelvan manualmente.</li>
+            <li>Una vez mezclada una rama, puede borrarse.</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h2>Tipos de merges</h2>
+            <ul>
+              <li>Fast-forward: añade los commits de una rama en la otra.</li>
+              <li>No Fast-forward: Se crea un nuevo commit que indica la unión de las ramas.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Tipos de merges</h2>
+            <img src="images/git-merge.png" alt="Git Merge">
+          </section>
+        </section>
+
+        <section>
+          <h2>Ventajas de no fast-forward</h2>
+          <p>Crea un commit 'innecesario' pero aporta ventajas:</p>
+          <ul>
+            <li>La historia queda más estructurada.</li>
+            <li>Sabemos de que rama vienen los commits.</li>
+            <li>Podemos retirar todos los commits con uno solo.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Rebase</h2>
+        </section>
+
+        <section>
+          <img width="659" height="393" src="images/back-to-future.gif" alt="Git Rebase">
+        </section>
+
+        <section>
+          <section>
+            <h2>Rebase</h2>
+            <p>Otra forma de mezclar ramas:</p>
+            <ul>
+              <li>Resetea nuestra rama a la cabeza de la otra.</li>
+              <li>Vuelve a aplicar nuestros cambios para que queden por encima de los de la otra rama.</li>
+              <li>Se reescribe la historia original de los commits.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Merge vs Rebase</h2>
+            <img src="images/git-rebase.png" alt="Git Rebase">
+          </section>
+        </section>
+
+        <section>
+          <h2>Problema</h2>
+          <img src="images/hand.jpg" alt="Marty">
+        </section>
+
+        <section>
+          <p>
+            Nunca se debe de hacer rebase con commits que ya estén compartidos:
+          </p>
+          <ul>
+            <li>Estaríamos reescribiendo la historia publicada.</li>
+            <li>Otros usuarios tendrían la historia diferente.</li>
+            <li>Podríamos crear una paradoja espacio-temporal y que el universo se plegara sobre si mismo (eso en el peor de los casos).</li>
+          </ul>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
